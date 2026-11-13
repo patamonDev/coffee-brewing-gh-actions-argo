@@ -28,12 +28,12 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           load: true
-          tags: coffee-webapp:latest
+          tags: docker push patamondev/coffee-webapp:latest
 
       # -
       #   name: Test Docker OCI
       #   run: |
-      #     docker run --rm coffee-webapp:latest
+      #     docker run --rm docker push patamondev/coffee-webapp:latest
 
       -
         name: Build and Push
@@ -41,4 +41,4 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: coffee-webapp:latest
+          tags: docker push patamondev/coffee-webapp:latest
