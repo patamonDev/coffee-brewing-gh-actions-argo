@@ -41,4 +41,4 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: docker push patamondev/coffee-webapp:latest
+          tags: patamondev/coffee-webapp:latest
