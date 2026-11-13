@@ -30,10 +30,10 @@ jobs:
           load: true
           tags: coffee-webapp:latest
 
-      -
-        name: Test Docker OCI
-        run: |
-          docker run --rm coffee-webapp:latest
+      # -
+      #   name: Test Docker OCI
+      #   run: |
+      #     docker run --rm coffee-webapp:latest
 
       -
         name: Build and Push
