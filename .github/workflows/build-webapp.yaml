@@ -41,4 +41,26 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: patamondev/coffee-webapp:latest
+          tags: patamondev/coffee-webapp:${{ github.sha }}
+
+  update-manifests:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout manifests repo
+        uses: actions/checkout@v4
+        with:
+          repository: patamonDev/argo-coffee
+          token: ${{ secrets.MANIFESTS_REPO_TOKEN }}
+
+      - name: Set new image tag
+        run: |
+          cd base
+          kustomize edit set image patamondev/coffee-webapp=patamondev/coffee-webapp:${{ github.sha }}
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Deploy ${{ github.sha }}"
+          git push
