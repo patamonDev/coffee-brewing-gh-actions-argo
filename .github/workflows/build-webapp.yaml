@@ -23,12 +23,12 @@ jobs:
         name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      -
-        name: Build and Export to Docker
-        uses: docker/build-push-action@v7
-        with:
-          load: true
-          tags: docker push patamondev/coffee-webapp:latest
+      # -
+      #   name: Build and Export to Docker
+      #   uses: docker/build-push-action@v7
+      #   with:
+      #     load: true
+      #     tags: patamondev/coffee-webapp:latest
 
       # -
       #   name: Test Docker OCI
